@@ -1,0 +1,7 @@
+---
+applications:
+- name: new-relic-service-broker
+  memory: 512M
+  instances: 1
+  path: target/new-relic-service-broker.jar
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
