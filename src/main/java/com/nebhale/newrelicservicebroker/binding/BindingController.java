@@ -16,6 +16,7 @@
 
 package com.nebhale.newrelicservicebroker.binding;
 
+import com.nebhale.newrelicservicebroker.Credentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

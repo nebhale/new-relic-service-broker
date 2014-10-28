@@ -16,7 +16,6 @@
 
 package com.nebhale.newrelicservicebroker.catalog;
 
-
 import com.nebhale.newrelicservicebroker.AbstractSerializationTest;
 
 import java.net.URI;

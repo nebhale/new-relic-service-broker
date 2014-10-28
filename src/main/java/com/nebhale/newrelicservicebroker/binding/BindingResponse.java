@@ -17,6 +17,7 @@
 package com.nebhale.newrelicservicebroker.binding;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.nebhale.newrelicservicebroker.Credentials;
 
 import java.net.URI;
 

@@ -16,17 +16,15 @@
 
 package com.nebhale.newrelicservicebroker.catalog;
 
-
 import com.nebhale.newrelicservicebroker.AbstractSerializationTest;
 
 import java.io.IOException;
 import java.net.URI;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public final class ServiceTest extends AbstractSerializationTest<Service> {
@@ -37,45 +35,31 @@ public final class ServiceTest extends AbstractSerializationTest<Service> {
         assertEquals("test-name", m.get("name"));
         assertEquals("test-description", m.get("description"));
         assertTrue((Boolean) m.get("bindable"));
-        assertEquals(getTags(), m.get("tags"));
-        assertEquals(roundTrip(getServiceMetadata()), m.get("metadata"));
-        assertEquals(getRequires(), m.get("requires"));
-        assertEquals(getPlans(), m.get("plans"));
+        assertNull(m.get("tags"));
+        assertNull(m.get("metadata"));
+        assertNull(m.get("requires"));
+        assertNull(m.get("plans"));
         assertEquals(roundTrip(getDashboardClient()), m.get("dashboard_client"));
     }
 
     @Override
     protected Service getInstance() {
+        // @formatter:off
         return new Service(null)
                 .id(getId())
                 .name("test-name")
                 .description("test-description")
                 .bindable(true)
                 .dashboardClient()
-                .id("test-id")
-                .secret("test-secret")
-                .redirectUri(URI.create("http://test.redirect.uri"))
-                .and();
+                    .id("test-id")
+                    .secret("test-secret")
+                    .redirectUri(URI.create("http://test.redirect.uri"))
+                    .and();
+        // @formatter:on
     }
 
     public UUID getId() {
         return UUID.nameUUIDFromBytes(new byte[0]);
-    }
-
-    public List<String> getTags() {
-        return Arrays.asList();
-    }
-
-    public ServiceMetadata getServiceMetadata() {
-        return new ServiceMetadata(null);
-    }
-
-    public List<String> getRequires() {
-        return Arrays.asList();
-    }
-
-    public List<Plan> getPlans() {
-        return Arrays.asList();
     }
 
     public DashboardClient getDashboardClient() {

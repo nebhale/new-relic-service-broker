@@ -16,14 +16,12 @@
 
 package com.nebhale.newrelicservicebroker.catalog;
 
-
 import com.nebhale.newrelicservicebroker.AbstractSerializationTest;
 
 import java.net.URI;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-
 
 public final class DashboardClientTest extends AbstractSerializationTest<DashboardClient> {
 

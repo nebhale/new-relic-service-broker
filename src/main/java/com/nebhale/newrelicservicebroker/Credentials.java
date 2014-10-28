@@ -14,18 +14,31 @@
  * limitations under the License.
  */
 
-package com.nebhale.newrelicservicebroker.binding;
+package com.nebhale.newrelicservicebroker;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+/**
+ * A holder for credential information such as the license key
+ */
+public final class Credentials {
 
-@Configuration
-public class CredentialsFactory {
+    private final String licenseKey;
 
-    @Bean
-    Credentials credentials(@Value("${licenseKey}") String licenseKey) {
-        return new Credentials(licenseKey);
+    /**
+     * Creates a new instance with a given license key
+     *
+     * @param licenseKey the license key to expose
+     */
+    public Credentials(String licenseKey) {
+        this.licenseKey = licenseKey;
+    }
+
+    /**
+     * Returns the license key
+     *
+     * @return the license key
+     */
+    public String getLicenseKey() {
+        return this.licenseKey;
     }
 
 }

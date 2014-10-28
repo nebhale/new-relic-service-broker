@@ -38,13 +38,13 @@ final class Service {
 
     private volatile Boolean bindable;
 
-    private final List<String> tags = new ArrayList<>();
+    private volatile List<String> tags;
 
-    private final ServiceMetadata serviceMetadata = new ServiceMetadata(this);
+    private volatile ServiceMetadata serviceMetadata;
 
-    private final List<String> requires = new ArrayList<>();
+    private volatile List<String> requires;
 
-    private final List<Plan> plans = new ArrayList<>();
+    private volatile List<Plan> plans;
 
     private volatile DashboardClient dashboardClient;
 
@@ -148,6 +148,9 @@ final class Service {
 
     Service tags(String... tags) {
         synchronized (this.monitor) {
+            if (this.tags == null) {
+                this.tags = new ArrayList<>();
+            }
             Arrays.stream(tags).forEach(this.tags::add);
             return this;
         }
@@ -155,12 +158,19 @@ final class Service {
 
     ServiceMetadata metadata() {
         synchronized (this.monitor) {
+            if (this.serviceMetadata == null) {
+                this.serviceMetadata = new ServiceMetadata(this);
+            }
+
             return this.serviceMetadata;
         }
     }
 
     Service requires(String... requires) {
         synchronized (this.monitor) {
+            if (this.requires == null) {
+                this.requires = new ArrayList<>();
+            }
             Arrays.stream(requires).forEach(this.requires::add);
             return this;
         }
@@ -168,6 +178,10 @@ final class Service {
 
     Plan plan() {
         synchronized (this.monitor) {
+            if (this.plans == null) {
+                this.plans = new ArrayList<>();
+            }
+
             Plan plan = new Plan(this);
             this.plans.add(plan);
             return plan;

@@ -14,10 +14,7 @@
  * limitations under the License.
  */
 
-package com.nebhale.newrelicservicebroker.binding;
-
-
-import com.nebhale.newrelicservicebroker.AbstractSerializationTest;
+package com.nebhale.newrelicservicebroker;
 
 import java.io.IOException;
 import java.util.Map;

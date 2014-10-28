@@ -16,7 +16,6 @@
 
 package com.nebhale.newrelicservicebroker.binding;
 
-
 import com.nebhale.newrelicservicebroker.AbstractDeserializationTest;
 
 import java.util.HashMap;
@@ -46,4 +45,5 @@ public final class BindingRequestTest extends AbstractDeserializationTest<Bindin
 
         return m;
     }
+
 }

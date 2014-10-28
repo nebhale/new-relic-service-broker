@@ -27,7 +27,7 @@ final class Cost {
 
     private final Object monitor = new Object();
 
-    private final Map<String, Double> amount = new HashMap<>();
+    private volatile Map<String, Double> amount;
 
     private volatile String unit;
 
@@ -57,6 +57,10 @@ final class Cost {
 
     Cost amount(String currency, Double value) {
         synchronized (this.monitor) {
+            if (this.amount == null) {
+                this.amount = new HashMap<>();
+            }
+
             this.amount.put(currency, value);
             return this;
         }

@@ -33,7 +33,7 @@ final class Plan {
 
     private volatile String description;
 
-    private final PlanMetadata planMetadata = new PlanMetadata(this);
+    private volatile PlanMetadata planMetadata;
 
     private volatile Boolean free;
 
@@ -104,6 +104,10 @@ final class Plan {
 
     PlanMetadata metadata() {
         synchronized (this.monitor) {
+            if (this.planMetadata == null) {
+                this.planMetadata = new PlanMetadata(this);
+            }
+
             return this.planMetadata;
         }
     }

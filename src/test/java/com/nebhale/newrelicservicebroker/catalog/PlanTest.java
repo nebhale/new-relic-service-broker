@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public final class PlanTest extends AbstractSerializationTest<Plan> {
@@ -32,7 +33,7 @@ public final class PlanTest extends AbstractSerializationTest<Plan> {
         assertEquals(getId().toString(), m.get("id"));
         assertEquals("test-name", m.get("name"));
         assertEquals("test-description", m.get("description"));
-        assertEquals(roundTrip(getPlanMetadata()), m.get("metadata"));
+        assertNull(m.get("metadata"));
         assertTrue((Boolean) m.get("free"));
     }
 
@@ -47,10 +48,6 @@ public final class PlanTest extends AbstractSerializationTest<Plan> {
 
     public UUID getId() {
         return UUID.nameUUIDFromBytes(new byte[0]);
-    }
-
-    public PlanMetadata getPlanMetadata() {
-        return new PlanMetadata(null);
     }
 
 }

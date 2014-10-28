@@ -16,29 +16,22 @@
 
 package com.nebhale.newrelicservicebroker.catalog;
 
-
 import com.nebhale.newrelicservicebroker.AbstractSerializationTest;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public final class CatalogTest extends AbstractSerializationTest<Catalog> {
 
     @Override
     protected void assertContents(Map m) {
-        assertEquals(getServices(), m.get("services"));
+        assertNull(m.get("services"));
     }
 
     @Override
     protected Catalog getInstance() {
         return new Catalog();
-    }
-
-    public List<Service> getServices() {
-        return Arrays.asList();
     }
 
 }

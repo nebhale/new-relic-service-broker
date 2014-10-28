@@ -21,7 +21,7 @@ import java.util.List;
 
 final class Catalog {
 
-    private final List<Service> services = new ArrayList<>();
+    private volatile List<Service> services;
 
     private final Object monitor = new Object();
 
@@ -33,6 +33,10 @@ final class Catalog {
 
     Service service() {
         synchronized (this.monitor) {
+            if (this.services == null) {
+                this.services = new ArrayList<>();
+            }
+
             Service service = new Service(this);
             this.services.add(service);
             return service;

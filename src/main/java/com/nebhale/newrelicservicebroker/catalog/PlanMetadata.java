@@ -26,9 +26,9 @@ final class PlanMetadata {
 
     private final Object monitor = new Object();
 
-    private final List<String> bullets = new ArrayList<>();
+    private volatile List<String> bullets;
 
-    private final List<Cost> costs = new ArrayList<>();
+    private volatile List<Cost> costs;
 
     private volatile String displayName;
 
@@ -62,6 +62,10 @@ final class PlanMetadata {
 
     PlanMetadata bullets(String... bullets) {
         synchronized (this.monitor) {
+            if (this.bullets == null) {
+                this.bullets = new ArrayList<>();
+            }
+
             Arrays.stream(bullets).forEach(this.bullets::add);
             return this;
         }
@@ -69,6 +73,10 @@ final class PlanMetadata {
 
     Cost cost() {
         synchronized (this.monitor) {
+            if (this.costs == null) {
+                this.costs = new ArrayList<>();
+            }
+
             Cost cost = new Cost(this);
             this.costs.add(cost);
             return cost;

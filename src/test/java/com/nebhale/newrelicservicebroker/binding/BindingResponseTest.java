@@ -17,13 +17,13 @@
 package com.nebhale.newrelicservicebroker.binding;
 
 import com.nebhale.newrelicservicebroker.AbstractSerializationTest;
+import com.nebhale.newrelicservicebroker.Credentials;
 
 import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
-
 
 public final class BindingResponseTest extends AbstractSerializationTest<BindingResponse> {
 

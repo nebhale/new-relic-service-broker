@@ -29,35 +29,37 @@ public class CatalogFactory {
     @Bean
     Catalog catalog(@Value("${service-broker.service_id}") String serviceId,
                     @Value("${service-broker.plan_id}") String planId) {
+        // @formatter:off
         return new Catalog()
-                .service()
+            .service()
+                .id(UUID.fromString(serviceId))
+                .name("newrelic")
+                .description("Manage and monitor your apps")
+                .bindable(true)
+                .tags("newrelic", "management", "monitoring", "apm")
+                .metadata()
+                    .displayName("New Relic")
+                    .imageUrl(URI.create("https://newrelic.com/images/logo/logo-newrelic-white.png"))
+                    .longDescription("New Relic is the all-in-one web app performance tool that lets you see " +
+                                     "performance from the end user experience, through servers, and down to the " +
+                                     "line of code.")
+                    .providerDisplayName("New Relic, Inc.")
+                    .documentationUrl(URI.create("https://docs.newrelic.com"))
+                    .supportUrl(URI.create("https://support.newrelic.com/home"))
+                    .and()
+                .plan()
                     .id(UUID.fromString(serviceId))
-                    .name("newrelic")
-                    .description("Manage and monitor your apps")
-                    .bindable(true)
-                    .tags("newrelic", "management", "monitoring", "apm")
+                    .name("standard")
+                    .description("Broker for static New Relic credentials")
                     .metadata()
-                        .displayName("New Relic")
-                        .imageUrl(URI.create("https://newrelic.com/images/logo/logo-newrelic-white.png"))
-                        .longDescription("New Relic is the all-in-one web app performance tool that lets you see " +
-                                         "performance from the end user experience, through servers, and down to the " +
-                                         "line of code.")
-                        .providerDisplayName("New Relic, Inc.")
-                        .documentationUrl(URI.create("https://docs.newrelic.com"))
-                        .supportUrl(URI.create("https://support.newrelic.com/home"))
+                        .bullets("JVM Performance analyzer", "Database call response time & throughput",
+                                 "Performance data API access")
+                        .displayName("Standard")
                         .and()
-                    .plan()
-                        .id(UUID.fromString(serviceId))
-                        .name("standard")
-                        .description("Broker for static New Relic credentials")
-                        .metadata()
-                            .bullets("JVM Performance analyzer", "Database call response time & throughput",
-                                     "Performance data API access")
-                            .displayName("Standard")
-                            .and()
-                        .free(true)
+                    .free(true)
                     .and()
                 .and();
+        // @formatter:on
     }
 
 }
