@@ -27,8 +27,8 @@ import java.util.UUID;
 public class CatalogFactory {
 
     @Bean
-    Catalog catalog(@Value("${service-broker.service_id}") String serviceId,
-                    @Value("${service-broker.plan_id}") String planId) {
+    Catalog catalog(@Value("${serviceBroker.serviceId}") String serviceId,
+                    @Value("${serviceBroker.planId}") String planId) {
         // @formatter:off
         return new Catalog()
             .service()
@@ -48,7 +48,7 @@ public class CatalogFactory {
                     .supportUrl(URI.create("https://support.newrelic.com/home"))
                     .and()
                 .plan()
-                    .id(UUID.fromString(serviceId))
+                    .id(UUID.fromString(planId))
                     .name("standard")
                     .description("Broker for static New Relic credentials")
                     .metadata()
