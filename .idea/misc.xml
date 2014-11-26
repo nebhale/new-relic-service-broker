@@ -3,6 +3,7 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="IdProvider" IDEtalkID="62A69EA5F49355C3962EFD929A37BBBA" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -14,4 +15,3 @@
     <output url="file://$PROJECT_DIR$/classes" />
   </component>
 </project>
-

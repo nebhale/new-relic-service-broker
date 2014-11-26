@@ -26,7 +26,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.1.8.RELEASE</version>
+        <version>1.1.9.RELEASE</version>
     </parent>
 
     <groupId>com.nebhale</groupId>
@@ -37,7 +37,7 @@
     <properties>
         <java-semver.version>0.8.0</java-semver.version>
         <java.version>1.8</java.version>
-        <tomcat.version>8.0.14</tomcat.version>
+        <tomcat.version>8.0.15</tomcat.version>
     </properties>
 
     <dependencies>
